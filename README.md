@@ -1,9 +1,9 @@
-# kdu-no-ssr
+# kdu-client-only
 
 ## Install
 
 ```bash
-yarn add kdu-no-ssr
+yarn add kdu-client-only
 ```
 
 ## Usage
@@ -12,19 +12,19 @@ yarn add kdu-no-ssr
 <template>
   <div id="app">
     <h1>My Website</h1>
-    <no-ssr>
+    <client-only>
       <!-- this component will only be rendered on client-side -->
       <comments />
-    </no-ssr>
+    </client-only>
   </div>
 </template>
 
 <script>
-  import NoSSR from 'kdu-no-ssr'
+  import ClientOnly from 'kdu-client-only'
 
   export default {
     components: {
-      'no-ssr': NoSSR
+      ClientOnly
     }
   }
 </script>
@@ -32,7 +32,7 @@ yarn add kdu-no-ssr
 
 ### Placeholder
 
-Use a slot or text as placeholder until `<no-ssr />` is mounted on client-side.
+Use a slot or text as placeholder until `<client-only />` is mounted on client-side.
 
 eg, show a loading indicator.
 
@@ -41,23 +41,23 @@ eg, show a loading indicator.
   <div id="app">
     <h1>My Website</h1>
     <!-- use slot -->
-    <no-ssr>
+    <client-only>
       <comments />
       <comments-placeholder slot="placeholder" />
-    </no-ssr>
+    </client-only>
     <!-- or use text -->
-    <no-ssr placeholder="Loading...">
+    <client-only placeholder="Loading...">
       <comments />
-    </no-ssr>
+    </client-only>
   </div>
 </template>
 
 <script>
-  import NoSSR from 'kdu-no-ssr'
+  import ClientOnly from 'kdu-client-only'
 
   export default {
     components: {
-      'no-ssr': NoSSR
+      ClientOnly
     }
   }
 </script>
@@ -66,21 +66,21 @@ eg, show a loading indicator.
 By default the placeholder will be wrapped in a `div` tag, however you can use `placeholderTag` prop to customize it:
 
 ```kdu
-<no-ssr placeholder="loading" placeholader-tag="span">
+<client-only placeholder="loading" placeholder-tag="span">
   <comments />
-</no-ssr>
+</client-only>
 ```
 
 And you get:
 
 ```html
-<span class="no-ssr-placeholder">
+<span class="client-only-placeholder">
   loading
 </span>
 ```
 
 If prop `placeholder` is an empty string (or `null`) and no `placeholder`
-slot is found, then `<no-ssr>` will render the Kdu placeholder element `<!---->`
+slot is found, then `<client-only>` will render the Kdu placeholder element `<!---->`
 instead of rendering the `placholder-tag` during SSR render.
 
 ## Development
